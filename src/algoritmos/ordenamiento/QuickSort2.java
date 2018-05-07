@@ -1,11 +1,11 @@
 
 public class QuickSort2 {
 	
-	private int [] clon;
+	private int [] A;
 
     public QuickSort2(int[] A) {
-        this.clon = A;
-        this.quickSort(0, this.clon.length-1);
+        this.A = A;
+        this.quickSort(0, A.length-1);
         
     }
 	void quickSort(int ini, int fin) {
@@ -18,21 +18,21 @@ public class QuickSort2 {
 		piv = fin;
 		aux = 0;
 		while (i <= j) {
-			while (i <= j && clon[i] < clon[piv]) {
+			while (i <= j && A[i] < A[piv]) {
 				i++;
 			}
-			while (i <= j && clon[j] > clon[piv]) {
+			while (i <= j && A[j] > A[piv]) {
 				j--;
 			}
 			if (i <= j) {
-				aux = clon[i];
-				clon[i] = clon[j];
-				clon[j] = aux;
+				aux = A[i];
+				A[i] = A[j];
+				A[j] = aux;
 			}
 		}
-		aux = clon[i];
-		clon[i] = clon[piv];
-		clon[piv] = aux;
+		aux = A[i];
+		A[i] = A[piv];
+		A[piv] = aux;
 		quickSort(ini, i - 1);
 		quickSort(i + 1, fin);
 	}
