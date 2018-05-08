@@ -20,14 +20,13 @@ public class Sort {
      */
     public void burbuja(int [] array){
         this.copia(array);
+        imprimir("Metodo burbuja");
         
-        for (int i = 1; i < A.length; i++) {
+        for (int i = 0; i < A.length; i++) {
             for (int j = i + 1; j < A.length; j++) {
                 int aux;
                 if (A[i] > A[j]) {
-                        aux = A[i];
-                        A[i] = A[j];
-                        A[j] = aux;
+                        this.swap(i, j);
                 }
             }
         }
@@ -38,6 +37,7 @@ public class Sort {
      */
     public void insertionSort(int[] array) {
         this.copia( array );
+        imprimir("Metodo InsertionSort");
         
         for (int i = 1; i < A.length; i++) {
             for(int j = i ; j > 0 ; j--){
@@ -54,6 +54,7 @@ public class Sort {
      */
     public void mergeSort(int [] A){
         this.copia(A);
+        imprimir("Metodo MergeSort");
         this.mergeSort(0, this.A.length-1);
     }
     
@@ -106,6 +107,7 @@ public class Sort {
      */
     public void quickSort(int[] A) {
         this.copia(A);
+        imprimir("Metodo QuitSort");
         this.quickSort(0, this.A.length-1);
         
     }
@@ -124,10 +126,10 @@ public class Sort {
                     j--;
             }
             if (i <= j) {
-                    swap(i, j);
+                    this.swap(i, j);
             }
         }
-        swap(i, j);
+        this.swap(i, j);
         quickSort(ini, i - 1);
         quickSort(i + 1, fin);
     }
@@ -138,9 +140,9 @@ public class Sort {
      * @param j segundo paramentro a intercambiar
      */
     private void swap(int i,int j) {
-        int swap=A[i];
-        A[i]=A[j];
-        A[j]=swap;
+        int aux=this.A[i];
+        this.A[i]=this.A[j];
+        this.A[j]=aux;
     }
     
     public void copia(int[] array){
@@ -165,5 +167,8 @@ public class Sort {
             System.out.print(A[i]+",");
         }
         System.out.println("\n");
+    }
+    public void imprimir(String a){
+        System.out.println(a);
     }
 }
