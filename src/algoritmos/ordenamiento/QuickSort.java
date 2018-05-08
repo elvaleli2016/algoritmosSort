@@ -24,7 +24,7 @@ public class QuickSort {
         int i,j,piv;
         i=ini;
         j=fin;
-        piv=i+(j-i)/2;
+        piv=fin-1;
         while(i<=j){
             while(A[i]<A[piv])
                 i++;
