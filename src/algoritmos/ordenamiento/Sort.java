@@ -108,7 +108,7 @@ public class Sort {
     public void quickSort(int[] A) {
         this.copia(A);
         imprimir("Metodo QuitSort");
-        this.quickSort(0, this.A.length-1);
+        this.quickSort2(0, this.A.length-1);
         
     }
     private void quickSort(int ini, int fin) {
@@ -133,6 +133,26 @@ public class Sort {
         quickSort(ini, i - 1);
         quickSort(i + 1, fin);
     }
+    
+    public void quickSort2( int ini, int fin) {
+
+        int piv=A[ini];                     // tomamos primer elemento como pivote
+        int i=ini;                          // i realiza la búsqueda de izquierda a derecha
+        int j=fin;  
+
+        while(i<j){                         // mientras no se crucen las búsquedas
+            while(A[i]<=piv && i<j) i++;    // busca elemento mayor que pivote
+            while(A[j]>piv) j--;            // busca elemento menor que pivote
+            if (i<j) {                      // si no se han cruzado                      
+                swap(i,j);
+            }
+        }
+        swap(ini,j);                        // los menores a su izquierda y los mayores a su derecha
+        if(ini<j-1)
+           quickSort2(ini,j-1);             // ordenamos subarray izquierdo
+        if(j+1 <fin)
+            quickSort2(j+1,fin);            // ordenamos subarray derecho
+      }
     
     /**
      * Metodo Intercambio
@@ -159,7 +179,7 @@ public class Sort {
     public void fin(){
         this.fin=new Date();
         System.out.println(fin+" diferencia:"+ ((fin.getTime()-inicio.getTime())/60));
-        this.imprimirArray();
+        //this.imprimirArray();
     }
     
     public void imprimirArray(){

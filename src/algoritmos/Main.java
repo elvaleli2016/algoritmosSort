@@ -26,20 +26,20 @@ public class Main {
         
         Sort sort=new Sort();
         
-        int longitud=10000;
+        int longitud=10000000;
         int[] array=new int[longitud];
         Random r = new Random();
         for(int i=0;i<longitud;i++){
-            array[i] = 1 + (int)(Math.random() * 9999999);
+            array[i] = 1 + (int)(Math.random() * 999999);
         }
         
-        sort.inicio();
-        sort.burbuja(array);
-        sort.fin();
-        
-        sort.inicio();
-        sort.insertionSort(array);
-        sort.fin();
+//        sort.inicio();
+//        sort.burbuja(array);
+//        sort.fin();
+//        
+//        sort.inicio();
+//        sort.insertionSort(array);
+//        sort.fin();
         
         sort.inicio();
         sort.mergeSort(array);
