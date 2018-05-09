@@ -48,6 +48,10 @@ public class Main {
         sort.inicio();
         sort.quickSort(array);
         sort.fin();
+        
+        sort.inicio();
+        sort.radixSort(array);
+        sort.fin();
     }
     
 }

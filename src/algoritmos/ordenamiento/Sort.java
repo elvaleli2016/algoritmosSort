@@ -5,7 +5,9 @@
  */
 package algoritmos.ordenamiento;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -107,26 +109,27 @@ public class Sort {
      */
     public void quickSort(int[] A) {
         this.copia(A);
-        imprimir("Metodo QuitSort");
+        imprimir("Metodo QuitSort2");
         this.quickSort2(0, this.A.length-1);
+        
         
     }
     private void quickSort(int ini, int fin) {
         int i, j, piv;
         if (ini >= fin)
             return;
-        i = ini;
-        j = fin - 1;
-        piv = fin;
-        while (i <= j) {
-            while (i <= j && A[i] < A[piv]) {
-                    i++;
+        i=ini;                          
+        j=fin;  
+        piv=A[fin];
+        while(i<j){                          
+            while(A[i]<=piv && i<j){       
+                i++;
+            }    
+            while(A[j]>piv){                
+                j--;
             }
-            while (i <= j && A[j] > A[piv]) {
-                    j--;
-            }
-            if (i <= j) {
-                    this.swap(i, j);
+            if (i<j) {                                         
+                swap(i,j);
             }
         }
         this.swap(i, j);
@@ -135,24 +138,91 @@ public class Sort {
     }
     
     public void quickSort2( int ini, int fin) {
-
-        int piv=A[ini];                     // tomamos primer elemento como pivote
-        int i=ini;                          // i realiza la búsqueda de izquierda a derecha
-        int j=fin;  
-
-        while(i<j){                         // mientras no se crucen las búsquedas
-            while(A[i]<=piv && i<j) i++;    // busca elemento mayor que pivote
-            while(A[j]>piv) j--;            // busca elemento menor que pivote
-            if (i<j) {                      // si no se han cruzado                      
+        int i,j,piv;
+        if (ini >= fin)
+            return;
+                             
+        i=ini;                          
+        j=fin;  
+        piv=A[ini];
+        while(i<j){                          
+            while(A[i]<=piv && i<j){       
+                i++;
+            }    
+            while(A[j]>piv){                
+                j--;
+            }
+            if (i<j) {                                         
                 swap(i,j);
             }
         }
-        swap(ini,j);                        // los menores a su izquierda y los mayores a su derecha
-        if(ini<j-1)
-           quickSort2(ini,j-1);             // ordenamos subarray izquierdo
-        if(j+1 <fin)
-            quickSort2(j+1,fin);            // ordenamos subarray derecho
-      }
+        swap(ini,j);  
+        quickSort2(ini,j-1);   
+        quickSort2(j+1,fin);            
+    }
+    
+    /**
+     * Metodo ShellSort
+     * @param array 
+     */
+    public void shellSort(int [] array){
+        copia(array);
+        int i,j,k,m,fin;
+        fin=A.length;
+        m=A.length/2;
+        
+        while(m>0){
+            i=m;
+            while(i<=fin){
+                j=i-m;
+                while(j>=0){
+                    k=j+m;
+                    if(A[j]<=A[k])break;
+                    else swap(j,k);
+                    j=j-m;
+                }
+                i++;
+            }
+            m=m/2;
+        }
+    }
+    
+    /**
+     * Metodo RadixSort
+     * @param array 
+     */
+    public void radixSort(int [] array){
+        copia(array);
+        imprimir("RadixSort");
+        List<Integer>[] pila = new ArrayList[10];
+            for (int i = 0; i < pila.length; i++) {
+                pila[i] = new ArrayList<Integer>();
+        }
+         
+        boolean bandera = false;
+        int tmp = -1;
+        int divisor = 1;
+        while (!bandera) {
+            bandera = true;
+            for (int i : A) {
+                tmp = i / divisor;
+                pila[tmp % 10].add(i);
+                if (bandera && tmp > 0) {
+                   bandera = false;
+                }
+            }
+            int a = 0;
+            for (int k = 0; k < 10; k++) {
+                for (Integer i : pila[k]) {
+                    A[a++] = i;
+                }
+                pila[k].clear();
+            }
+            divisor *= 10;
+        }
+        //imprimirArray();
+    }
+    
     
     /**
      * Metodo Intercambio
