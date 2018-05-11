@@ -64,7 +64,8 @@ public class Fachada {
         sorts.fin();
         return "";
         }catch(Exception e){
-            return e.toString();
+            System.out.print("Ha ocurrido un error "+e.toString());
+            return "";
         }
     }
     

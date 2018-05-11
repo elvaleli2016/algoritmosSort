@@ -163,10 +163,62 @@ public class Sort {
      * Metodo HeadSort
      * @param A array 
      */
-    public void headSort(int[] A) {
-        this.copia(A);
+    public void headSort(int[] array) {
+        int i,n;
+        i=0;
+        n=array.length;
         imprimir("Metodo HeadSort");
-        //this.quickSort2(0, this.A.length-1);  
+        
+        A=new int[n+1];
+        
+        while(i<n){
+            //imprimir("i:"+i+" array:"+array[i]);
+            insertHeap(i, array[i]);
+            i++;
+        }
+        int[] B=new int[n];
+        i=0;
+        while(n>=1){
+            B[i]=eliminarHeap(n);
+            n--;
+            i++;
+        }
+        A=B; 
+    }
+     private void insertHeap(int n,int x){
+        n++;
+        A[n]=x;
+        siftUp(n);
+    }
+    
+    private void siftUp(int n){
+        int p=n/2;
+        while(p>=1&&A[n]<A[p]){
+            swap(n,p);
+            n=p;
+            p=n/2;
+        }
+        
+    }
+    
+    private int eliminarHeap(int n){
+        int aux=A[1];
+        A[1]=A[n];
+        siftDown(n);
+        return aux;
+    }
+    
+    private void siftDown(int n){
+        int p,h;
+        p=1;
+        while(p<=n/2){
+            h=p*2;
+            if(h+1<=n&&A[h+1]<A[h])
+                h=h+1;
+            if(A[p]<A[h])return;
+            swap(p,h);
+            p=h;
+        }
     }
     
     /**
