@@ -110,9 +110,7 @@ public class Sort {
     public void quickSort(int[] A) {
         this.copia(A);
         imprimir("Metodo QuitSort2");
-        this.quickSort2(0, this.A.length-1);
-        
-        
+        this.quickSort2(0, this.A.length-1);  
     }
     private void quickSort(int ini, int fin) {
         int i, j, piv;
@@ -159,6 +157,16 @@ public class Sort {
         swap(ini,j);  
         quickSort2(ini,j-1);   
         quickSort2(j+1,fin);            
+    }
+    
+    /**
+     * Metodo HeadSort
+     * @param A array 
+     */
+    public void headSort(int[] A) {
+        this.copia(A);
+        imprimir("Metodo HeadSort");
+        //this.quickSort2(0, this.A.length-1);  
     }
     
     /**
@@ -235,7 +243,7 @@ public class Sort {
         this.A[j]=aux;
     }
     
-    public void copia(int[] array){
+    private void copia(int[] array){
         this.A=new int [array.length];
         for(int i=0;i<array.length;i++){
             this.A[i]=array[i];
@@ -252,13 +260,13 @@ public class Sort {
         //this.imprimirArray();
     }
     
-    public void imprimirArray(){
+    private void imprimirArray(){
         for(int i=0;i<A.length;i++){
             System.out.print(A[i]+",");
         }
         System.out.println("\n");
     }
-    public void imprimir(String a){
+    private void imprimir(String a){
         System.out.println(a);
     }
 }
