@@ -247,6 +247,26 @@ public class Sort {
         }
     }
     
+    public void metodoShellSort(int [] array) {
+        int salto, aux, i;
+        boolean cambios;
+        imprimir("Metodo ShellSort");
+        copia(array);
+        for (salto = A.length / 2; salto != 0; salto /= 2) {
+            cambios = true;
+            while (cambios) { // Mientras se intercambie alg�n elemento
+                cambios = false;
+                for (i = salto; i < A.length; i++) // se da una pasada
+                    if (A[i - salto] > A[i]) { // y si est�n desordenados
+                        aux = A[i]; // se reordenan
+                        A[i] = A[i - salto];
+                        A[i - salto] = aux;
+                        cambios = true; // y se marca como cambio.
+                    }
+            }
+        }
+    }
+    
     /**
      * Metodo RadixSort
      * @param array 
@@ -312,7 +332,7 @@ public class Sort {
         //this.imprimirArray();
     }
     
-    private void imprimirArray(){
+    public void imprimirArray(){
         for(int i=0;i<A.length;i++){
             System.out.print(A[i]+",");
         }
