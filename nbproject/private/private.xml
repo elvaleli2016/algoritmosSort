@@ -5,6 +5,8 @@
         <group>
             <file>file:/C:/Users/Eliam/Documents/NetBeansProjects/Algoritmos/src/algoritmos/Fachada.java</file>
             <file>file:/C:/Users/Eliam/Documents/NetBeansProjects/Algoritmos/src/algoritmos/VistaOrdenamiento.java</file>
+            <file>file:/C:/Users/Eliam/Documents/NetBeansProjects/Algoritmos/src/algoritmos/ordenamiento/ShellSort.java</file>
+            <file>file:/C:/Users/Eliam/Documents/NetBeansProjects/Algoritmos/src/algoritmos/ordenamiento/QuickSort2.java</file>
             <file>file:/C:/Users/Eliam/Documents/NetBeansProjects/Algoritmos/src/algoritmos/Main.java</file>
             <file>file:/C:/Users/Eliam/Documents/NetBeansProjects/Algoritmos/src/algoritmos/ordenamiento/Sort.java</file>
         </group>
