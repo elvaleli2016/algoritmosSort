@@ -5,10 +5,6 @@
  */
 package algoritmos;
 
-import algoritmos.ordenamiento.InsertionSort;
-import algoritmos.ordenamiento.MergeSoft;
-import algoritmos.ordenamiento.QuickSort;
-import algoritmos.ordenamiento.QuickSort2;
 import algoritmos.ordenamiento.Sort;
 import java.util.Date;
 import java.util.Random;
@@ -40,9 +36,16 @@ public class Fachada {
     }
     
     private void generarArray(){
-        array=new int[longitud];
-        for(int i=0;i<longitud;i++){
-            array[i] = 1 + (int)(Math.random() * numMax);
+        try{
+            array=new int[longitud];
+            for(int i=0;i<longitud;i++){
+                array[i] = 1 + (int)(Math.random() * numMax);
+            }
+            System.out.println("Se ha creado el array de "+longitud+" posiciones");
+        }catch(Exception e){
+            System.out.println("Ocurrio un error");
+        }catch(OutOfMemoryError e){
+            System.out.println("Desborde de memoria");
         }
     }
     /**
@@ -51,18 +54,17 @@ public class Fachada {
      */
     public String ordenarBy(String orden){
         try{
-        sorts.inicio();
-        switch(orden){
-            case "burbuja":         sorts.burbuja(array)        ;break;
-            case "insertionSort":   sorts.insertionSort(array)  ;break;
-            case "mergeSort":       sorts.mergeSort(array)      ;break;
-            case "quickSort":       sorts.quickSort(array)      ;break;
-            case "headSort":        sorts.headSort(array)       ;break;
-            case "radixSort":       sorts.radixSort(array)      ;break;
-            case "shellSort":       sorts.metodoShellSort(array) ;break;
-        }
-        sorts.fin();
-        return "";
+            sorts.inicio();
+            switch(orden){
+                case "burbuja":         sorts.burbuja(array)        ;break;
+                case "insertionSort":   sorts.insertionSort(array)  ;break;
+                case "mergeSort":       sorts.mergeSort(array)      ;break;
+                case "quickSort":       sorts.quickSort(array)      ;break;
+                case "headSort":        sorts.headSort(array)       ;break;
+                case "radixSort":       sorts.radixSort(array)      ;break;
+                case "shellSort":       sorts.metodoShellSort(array) ;break;
+            }
+            return orden+ "\n" + sorts.fin() +"\n";
         }catch(Exception e){
             System.out.print("Ha ocurrido un error "+e.toString());
             return "";

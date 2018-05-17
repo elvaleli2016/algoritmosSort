@@ -12,6 +12,6 @@ package algoritmos;
 public class Main {
     public static void main(String[] args) {
         Fachada fac=new Fachada(5, 9);
-        fac.ordenarBy("headSort");
+        fac.ordenarBy("quickSort");
     }
 }

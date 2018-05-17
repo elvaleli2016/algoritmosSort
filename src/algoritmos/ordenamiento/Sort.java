@@ -113,24 +113,21 @@ public class Sort {
         this.quickSort2(0, this.A.length-1);  
     }
     private void quickSort(int ini, int fin) {
-        int i, j, piv;
+        int i, j, piv, aux;
         if (ini >= fin)
             return;
-        i=ini;                          
-        j=fin;  
-        piv=A[fin];
-        while(i<j){                          
-            while(A[i]<=piv && i<j){       
-                i++;
-            }    
-            while(A[j]>piv){                
-                j--;
-            }
-            if (i<j) {                                         
+        i = ini;
+        j = fin - 1;
+        piv = fin;
+        aux = 0;
+        while (i <= j) {
+            while (i <= j && A[i] < A[piv]) i++;
+            while (i <= j && A[j] > A[piv]) j--;
+            if (i <= j) {
                 swap(i,j);
             }
         }
-        this.swap(i, j);
+        swap(i,aux);
         quickSort(ini, i - 1);
         quickSort(i + 1, fin);
     }
@@ -326,10 +323,11 @@ public class Sort {
         this.inicio = new Date();
     }
     
-    public void fin(){
+    public String fin(){
         this.fin=new Date();
-        System.out.println(fin+" diferencia:"+ ((fin.getTime()-inicio.getTime())/60));
-        //this.imprimirArray();
+        String mens=fin+" diferencia:"+ ((fin.getTime()-inicio.getTime())/60);
+        System.out.println(mens);
+        return mens;
     }
     
     public void imprimirArray(){
