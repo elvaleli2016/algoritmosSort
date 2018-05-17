@@ -222,43 +222,20 @@ public class Sort {
      * Metodo ShellSort
      * @param array 
      */
-    public void shellSort(int [] array){
-        copia(array);
-        int i,j,k,m,fin;
-        fin=A.length;
-        m=A.length/2;
-        
-        while(m>0){
-            i=m;
-            while(i<=fin){
-                j=i-m;
-                while(j>=0){
-                    k=j+m;
-                    if(A[j]<=A[k])break;
-                    else swap(j,k);
-                    j=j-m;
-                }
-                i++;
-            }
-            m=m/2;
-        }
-    }
     
-    public void metodoShellSort(int [] array) {
+    public void shellSort(int [] array) {
         int salto, aux, i;
         boolean cambios;
         imprimir("Metodo ShellSort");
         copia(array);
         for (salto = A.length / 2; salto != 0; salto /= 2) {
             cambios = true;
-            while (cambios) { // Mientras se intercambie alg�n elemento
+            while (cambios) {                       // Mientras se intercambie algún elemento
                 cambios = false;
-                for (i = salto; i < A.length; i++) // se da una pasada
-                    if (A[i - salto] > A[i]) { // y si est�n desordenados
-                        aux = A[i]; // se reordenan
-                        A[i] = A[i - salto];
-                        A[i - salto] = aux;
-                        cambios = true; // y se marca como cambio.
+                for (i = salto; i < A.length; i++)  // se da una pasada
+                    if (A[i - salto] > A[i]) {      // y si estan desordenados
+                        swap(i,i-salto);            // se reordenan
+                        cambios = true;             // y se marca como cambio.
                     }
             }
         }

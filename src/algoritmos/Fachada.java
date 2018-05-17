@@ -62,7 +62,7 @@ public class Fachada {
                 case "quickSort":       sorts.quickSort(array)      ;break;
                 case "headSort":        sorts.headSort(array)       ;break;
                 case "radixSort":       sorts.radixSort(array)      ;break;
-                case "shellSort":       sorts.metodoShellSort(array) ;break;
+                case "shellSort":       sorts.shellSort(array)      ;break;
             }
             return orden+ "\n" + sorts.fin() +"\n";
         }catch(Exception e){
