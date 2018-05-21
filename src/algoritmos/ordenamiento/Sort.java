@@ -5,6 +5,7 @@
  */
 package algoritmos.ordenamiento;
 
+import arbol.ArbolBin;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -277,6 +278,14 @@ public class Sort {
         //imprimirArray();
     }
     
+    public void preOrden(int [] array){
+        ArbolBin arbol=new ArbolBin<Integer>();
+        for(int i=0;i<array.length;i++){
+            arbol.insertNodo(array[i]);
+        }
+        arbol.ordenar("preorden");
+    }
+    
     
     /**
      * Metodo Intercambio
@@ -302,7 +311,7 @@ public class Sort {
     
     public String fin(){
         this.fin=new Date();
-        String mens=fin+" diferencia:"+ ((fin.getTime()-inicio.getTime())/60);
+        String mens=fin+" diferencia:"+ ((fin.getTime()-inicio.getTime()));
         System.out.println(mens);
         return mens;
     }

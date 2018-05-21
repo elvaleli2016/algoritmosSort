@@ -6,6 +6,7 @@
 package algoritmos;
 
 import algoritmos.ordenamiento.Sort;
+import arbol.ArbolBin;
 import java.util.Date;
 import java.util.Random;
 
@@ -48,6 +49,28 @@ public class Fachada {
             System.out.println("Desborde de memoria");
         }
     }
+    public void generarArraySinRepetir(){
+        try{
+            if(longitud<numMax){
+                array=new int[longitud];
+                Integer numero;
+                ArbolBin<Integer> arbol=new ArbolBin();
+                for(int i=0;i<longitud;i++){
+                    do{
+                        numero= 1 + (int)(Math.random() * numMax);
+                    }while(arbol.buscar(numero));
+                    arbol.insertNodo(numero);
+                    
+                    array[i] =numero;
+                }
+                System.out.println("Se ha creado el array de "+longitud+" posiciones");
+            }
+        }catch(Exception e){
+            System.out.println("Ocurrio un error");
+        }catch(OutOfMemoryError e){
+            System.out.println("Desborde de memoria");
+        }
+    }
     /**
      * Metodo
      * @return 
@@ -63,12 +86,20 @@ public class Fachada {
                 case "headSort":        sorts.headSort(array)       ;break;
                 case "radixSort":       sorts.radixSort(array)      ;break;
                 case "shellSort":       sorts.shellSort(array)      ;break;
+                case "arbol":           sorts.preOrden(array);
             }
             return orden+ "\n" + sorts.fin() +"\n";
         }catch(Exception e){
             System.out.print("Ha ocurrido un error "+e.toString());
             return "";
         }
+    }
+    
+    public void imprimirArray(){
+        for(int i=0;i<array.length;i++){
+            System.out.print(array[i]+",");
+        }
+        System.out.println("\n");
     }
     
     
