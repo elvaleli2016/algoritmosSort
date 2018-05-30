@@ -325,7 +325,7 @@ public class VistaOrdenamiento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        fac.ordenarBy("arbol");
+        this.escribir( fac.ordenarBy("arbol") );
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**

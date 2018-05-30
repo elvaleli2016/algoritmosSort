@@ -281,9 +281,9 @@ public class Sort {
     public void preOrden(int [] array){
         ArbolBin arbol=new ArbolBin<Integer>();
         for(int i=0;i<array.length;i++){
-            arbol.insertNodo(array[i]);
+            arbol.insertaNodo(array[i]);
         }
-        arbol.ordenar("preorden");
+        arbol.ordenar("inorden");
     }
     
     

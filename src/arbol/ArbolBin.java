@@ -1,46 +1,132 @@
+package arbol;
+
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package arbol;
 
 /**
  *
- * @author Eliam
+ * @author Eliam Zapata
  */
 public class ArbolBin<T> {
-    
-    private NodoBinario<T> head;
 
+    NodoB raiz;
+
+    //Constructor
     public ArbolBin() {
+        raiz = null;
     }
-    
-    public void insertNodo(T info){
-        if(head==null)
-            head=new NodoBinario(info);
-        else{
-            this.insert(info);
+
+    //Insercion de un elemento en el arbol
+    public void insertaNodo(T elem) {
+        if (raiz == null) {
+            raiz = new NodoB<T>(elem);
+        } else {
+            raiz.insertar(elem);
         }
     }
-
-    private void insert(T info) {
-        if(head==null)
-            head=new NodoBinario(info);
-        else head.insertar(info);
-    }
+    
     public void ordenar(String ord){
         switch(ord){
-            case "preorden":    head.preOrden(head);break;
-            case "postorden":   head.postOrden(head);break;
-            case "inorden":     head.inOrden(head);
+            case "preorden":    preOrden(raiz);break;
+            case "postorden":   postOrden(raiz);break;
+            case "inorden":     inOrden(raiz);
         }
     }
-    public boolean buscar(T bus){
-        if(head==null)return false;
-        return head.buscar(head, bus);
+
+    //Preorden Recursivo del arbol
+    public void preOrden(NodoB Nodo) {
+        if (Nodo == null) {
+            return;
+        } else {
+            System.out.print(Nodo.info + " ");
+            preOrden(Nodo.izq);
+            preOrden(Nodo.der);
+        }
+    }
+
+    //PostOrden recursivo del arbol
+    public void postOrden(NodoB Nodo) {
+        if (Nodo == null) {
+            return;
+        } else {
+            postOrden(Nodo.izq);
+            postOrden(Nodo.der);
+            System.out.print(Nodo.info + " ");
+        }
+    }
+
+    //Inorden Recursivo del arbol
+    public void inOrden(NodoB Nodo) {
+        if (Nodo == null) {
+            return;
+        } else {
+            inOrden(Nodo.izq);
+            System.out.print(Nodo.info + " ");
+            inOrden(Nodo.der);
+        }
+    }
+
+    //cantidad de niveles q	ue posee el arbol
+    public int altura(NodoB Nodo) {
+        if (Nodo == null) {
+            return -1;
+        } else {
+            return 1 + Math.max(altura(Nodo.izq), altura(Nodo.der));
+        }
+    }
+
+    //cantidad de elementos que posee el arbol	
+    public int tamaño(NodoB Nodo) {
+        if (Nodo == null) {
+            return 0;
+        } else {
+            return 1 + tamaño(Nodo.izq) + tamaño(Nodo.der);
+        }
     }
     
+    public boolean buscar(T elem){
+        return buscar(elem,raiz);
+    }
+    /**
+     * Metodo buscar si existe
+     * @param elem
+     * @param A
+     * @return 
+     */
+    public boolean buscar(T elem, NodoB A) {
+        if (A == null)
+            return false;
+        if(A.compareTo(elem)==0) {
+            return true;
+        } else {
+            if (A.compareTo(elem)==1) {
+                return buscar(elem, A.der);
+            } else {
+                return buscar(elem, A.izq);
+            }
+        }
+    }
     
+    /**
+     * Metodo encontrar Nodo
+     * @param elem
+     * @param A
+     * @return 
+     */
+    public NodoB buscarNodo(T elem, NodoB A) {
+        if (A == null)
+            return null;
+        if(A.compareTo(elem)==0) {
+            return A;
+        } else {
+            if (A.compareTo(elem)==1) {
+                return buscarNodo(elem, A.der);
+            } else {
+                return buscarNodo(elem, A.izq);
+            }
+        }
+    }
     
 }

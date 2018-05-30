@@ -59,7 +59,7 @@ public class Fachada {
                     do{
                         numero= 1 + (int)(Math.random() * numMax);
                     }while(arbol.buscar(numero));
-                    arbol.insertNodo(numero);
+                    arbol.insertaNodo(numero);
                     
                     array[i] =numero;
                 }
