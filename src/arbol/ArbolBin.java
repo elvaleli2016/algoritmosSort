@@ -12,6 +12,8 @@ package arbol;
 public class ArbolBin<T> {
 
     NodoB raiz;
+    private int [] array;
+    int longitud;
 
     //Constructor
     public ArbolBin() {
@@ -27,12 +29,10 @@ public class ArbolBin<T> {
         }
     }
     
-    public void ordenar(String ord){
-        switch(ord){
-            case "preorden":    preOrden(raiz);break;
-            case "postorden":   postOrden(raiz);break;
-            case "inorden":     inOrden(raiz);
-        }
+    public int[] ordenar(int longitud){
+        this.array=new int[longitud];
+        return inOrdenArray(raiz);
+        
     }
 
     //Preorden Recursivo del arbol
@@ -58,14 +58,16 @@ public class ArbolBin<T> {
     }
 
     //Inorden Recursivo del arbol
-    public void inOrden(NodoB Nodo) {
+    public int[] inOrdenArray(NodoB Nodo) {
         if (Nodo == null) {
-            return;
+            return null;
         } else {
-            inOrden(Nodo.izq);
-            System.out.print(Nodo.info + " ");
-            inOrden(Nodo.der);
+            inOrdenArray(Nodo.izq);
+            array[longitud]=(int) Nodo.info;
+            inOrdenArray(Nodo.der);
         }
+        longitud++;
+        return array;
     }
 
     //cantidad de niveles q	ue posee el arbol

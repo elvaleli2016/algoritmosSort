@@ -278,12 +278,13 @@ public class Sort {
         //imprimirArray();
     }
     
-    public void preOrden(int [] array){
+    public void arbolBinario(int [] array){
+        System.out.println("Metodo ArbolBinario");
         ArbolBin arbol=new ArbolBin<Integer>();
         for(int i=0;i<array.length;i++){
             arbol.insertaNodo(array[i]);
         }
-        arbol.ordenar("inorden");
+        array=arbol.ordenar(array.length);
     }
     
     

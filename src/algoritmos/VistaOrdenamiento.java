@@ -78,7 +78,7 @@ public class VistaOrdenamiento extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setText("TODOS");
+        jButton8.setText("ARBOL BINARIO");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
