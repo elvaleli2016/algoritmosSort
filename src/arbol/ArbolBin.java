@@ -29,7 +29,7 @@ public class ArbolBin<T> {
         }
     }
     
-    public int[] ordenar(int longitud){
+    public int[] ordenar(int longitud){ 
         this.array=new int[longitud];
         return inOrdenArray(raiz);
         
